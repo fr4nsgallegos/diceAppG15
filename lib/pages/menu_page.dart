@@ -52,7 +52,9 @@ class _MenuPageState extends State<MenuPage> {
         margin: EdgeInsets.only(bottom: 8),
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: menuModel.isSelected == true ? Colors.orange : Colors.white,
+          color: menuModel.isSelected == true
+              ? Color(0xffFDD770)
+              : Colors.white,
 
           borderRadius: BorderRadius.circular(25),
           border: Border.all(width: 2, color: Colors.black),
@@ -93,14 +95,34 @@ class _MenuPageState extends State<MenuPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(menuModel.title, style: TextStyle(fontSize: 20)),
+                Text(
+                  menuModel.title,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: menuModel.isSelected == true
+                        ? Colors.white
+                        : Colors.black,
+                  ),
+                ),
                 Text(
                   menuModel.subtitle,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w300,
+                    color: menuModel.isSelected == true
+                        ? Colors.white
+                        : Colors.black,
+                  ),
                 ),
                 Text(
                   "S/ ${menuModel.price.toString()}",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: menuModel.isSelected == true
+                        ? Colors.white
+                        : Colors.black,
+                  ),
                 ),
               ],
             ),
