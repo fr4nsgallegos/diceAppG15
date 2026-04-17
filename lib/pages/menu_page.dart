@@ -7,6 +7,8 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  int? selectedMenuIndex;
+
   List<Map<String, dynamic>> menuList = [
     {
       "title": "Menú 1",
@@ -38,10 +40,12 @@ class _MenuPageState extends State<MenuPage> {
     },
   ];
 
-  Widget buildMenuCard(MenuModel menuModel) {
+  Widget buildMenuCard(MenuModel menuModel, int index) {
+    menuModel.isSelected = selectedMenuIndex == index;
     return GestureDetector(
       onTap: () {
-        menuModel.isSelected = !menuModel.isSelected;
+        // menuModel.isSelected = !menuModel.isSelected;
+        selectedMenuIndex = menuModel.isSelected == true ? null : index;
         setState(() {});
       },
       child: Container(
@@ -128,7 +132,7 @@ class _MenuPageState extends State<MenuPage> {
             Column(
               children: List.generate(
                 menuList.length,
-                (index) => buildMenuCard(listMenuModel[index]),
+                (index) => buildMenuCard(listMenuModel[index], index),
               ),
             ),
           ],
