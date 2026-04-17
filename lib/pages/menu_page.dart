@@ -1,3 +1,4 @@
+import 'package:diceappg15/models/menu_model.dart';
 import 'package:flutter/material.dart';
 
 class MenuPage extends StatelessWidget {
@@ -32,7 +33,7 @@ class MenuPage extends StatelessWidget {
     },
   ];
 
-  Widget buildMenuCard(Map<String, dynamic> menuMap) {
+  Widget buildMenuCard(MenuModel menuModel) {
     return Container(
       margin: EdgeInsets.only(bottom: 8),
       padding: EdgeInsets.all(16),
@@ -61,7 +62,7 @@ class MenuPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(menuMap["imageUrl"]),
+                image: NetworkImage(menuModel.urlImage),
               ),
             ),
           ),
@@ -76,13 +77,13 @@ class MenuPage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(menuMap["title"], style: TextStyle(fontSize: 20)),
+              Text(menuModel.title, style: TextStyle(fontSize: 20)),
               Text(
-                menuMap["subtitle"],
+                menuModel.subtitle,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
               ),
               Text(
-                "S/ ${menuMap["price"].toString()}",
+                "S/ ${menuModel.price.toString()}",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
             ],
@@ -114,7 +115,7 @@ class MenuPage extends StatelessWidget {
             Column(
               children: List.generate(
                 menuList.length,
-                (index) => buildMenuCard(menuList[index]),
+                (index) => buildMenuCard(listMenuModel[index]),
               ),
             ),
           ],
