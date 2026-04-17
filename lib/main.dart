@@ -1,6 +1,7 @@
 import 'package:diceappg15/pages/dice_page.dart';
+import 'package:diceappg15/pages/menu_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: DicePage(), debugShowCheckedModeBanner: false));
+  runApp(MaterialApp(home: MenuPage(), debugShowCheckedModeBanner: false));
 }
